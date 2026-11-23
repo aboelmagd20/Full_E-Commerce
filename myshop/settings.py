@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!*x#2_iijr(5g%ce&=c221&r$9$g_yb-n7)6l(ciho^1urgegl'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-only-insecure-key-change-me')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -142,16 +142,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'opscrazy2000@gmail.com'  # ضع بريدك هنا
-EMAIL_HOST_PASSWORD = 'hqel lvgi opkn cgqp'  # ضع كلمة مرور التطبيق هنا
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51Qwnxo01WIM1OicesBXrahykuYB71NtD2u2JbDT7Bqy4RULHqn9yxcPPEUSWWuQU8qvb8S0U3FrAMX6g8opV4w9J00hWZ3wXd2' # Publishable key
-STRIPE_SECRET_KEY = 'sk_test_51Qwnxo01WIM1OicerMdXUl7b4GwdwKZwqGYVhVkBu3EmdmaB9ZNKDgiBCHmLMA3A92oOISnRH0bWcTtq0mDctG0b00jb2IKSVx'      
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY', '')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 # Secret key
 STRIPE_API_VERSION = '2022-08-01'
 
-STRIPE_WEBHOOK_SECRET = "whsec_5e426adb3ef08ad27c2df308bcb64dc92b910ebc57e99736f5aa84dda23b7062"
+STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET', '')
 
 
 REDIS_HOST = 'localhost'
